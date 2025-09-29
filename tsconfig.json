@@ -1,5 +1,14 @@
 {
   "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@styles/*": ["styles/*"],
+      "@services/*": ["services/*"],
+      "@utils/*": ["utils/*"],
+      "@pages/*": ["pages/*"],
+      "@firebaseConfig": ["firebaseConfig.ts"],
+    },
     "target": "es5",
     "lib": [
       "dom",
