@@ -1,5 +1,5 @@
-import React from "react";
-import { useSearchParams } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import SearchBar from "../components/common/SearchBar";
 import Spinner from "../components/common/Spinner";
 import ErrorMessage from "../components/common/ErrorMessage";
@@ -7,8 +7,7 @@ import { usePlayer } from "../hooks/usePlayer";
 import { PlayerInfoCard } from "../components/players/PlayerInfoCard";
 
 const SearchPlayer: React.FC = () => {
-  const [searchParams] = useSearchParams();
-  const initialSearch = searchParams.get("name") || "";
+  const { name } = useParams<{ name: string }>();
 
   const {
     playerName,
@@ -17,7 +16,14 @@ const SearchPlayer: React.FC = () => {
     loading,
     error,
     handleSearch,
-  } = usePlayer(initialSearch);
+  } = usePlayer(name || "");
+
+  useEffect(() => {
+    if (name) {
+      setPlayerName(name);
+      handleSearch(name);
+    }
+  }, [name, handleSearch, setPlayerName]);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") handleSearch();
