@@ -22,7 +22,7 @@ export const AuthProvider: React.FC<Props> = ({ children }) => {
       // Solo aceptamos usuarios con email verificado
        if (isRegistering) {
         setLoading(false); // Seguimos mostrando el spinner de App.tsx
-        return; 
+        return;
       }
 
       if (firebaseUser && firebaseUser.emailVerified) {
@@ -34,7 +34,7 @@ export const AuthProvider: React.FC<Props> = ({ children }) => {
     });
 
     return unsubscribe;
-  }, []);
+}, [isRegistering]);
 
   return (
    <AuthContext.Provider value={{ user, loading, isRegistering, setIsRegistering }}>

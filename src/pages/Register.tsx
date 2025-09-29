@@ -1,4 +1,3 @@
-// src/pages/Register.tsx
 import React, { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useRegister } from "../hooks/useRegister";
