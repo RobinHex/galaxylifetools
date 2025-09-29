@@ -15,6 +15,7 @@ export const MemberCard: React.FC<MemberCardProps> = ({ member, roleInfo }) => {
     navigate(`/player/${encodeURIComponent(member.Name)}`);
       // verificar si el jugador tiene coordenadas válidas
 
+      
   };
     return (
     <div
